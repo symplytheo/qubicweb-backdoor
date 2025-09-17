@@ -132,7 +132,7 @@ For paginated responses:
 
 The project includes a Makefile for common development tasks:
 
-- `make run` - Start development server on port 8001
+- `make run` - Start development server on port 3010
 - `make migrate` - Run makemigrations and migrate
 - `make freeze` - Update requirements.txt with current packages
 - `make install` - Install dependencies from requirements.txt
