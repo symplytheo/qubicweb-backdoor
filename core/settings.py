@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "blog",
+    "accounts",
     "tinymce",
     "drf_spectacular",
 ]
@@ -203,8 +204,16 @@ REST_FRAMEWORK = {
     "DEFAULT_RENDERER_CLASSES": ["core.helpers.CustomJSONRenderer"],
     "DEFAULT_PAGINATION_CLASS": "core.helpers.CustomPageNumberPagination",
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework_simplejwt.authentication.JWTAuthentication"
+    ],
 }
 
+# Custom user model
+AUTH_USER_MODEL = "accounts.CustomUser"
+
+
+# TinyMCE configuration
 TINYMCE_DEFAULT_CONFIG = {
     "height": 400,
     "width": "100%",

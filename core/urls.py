@@ -24,6 +24,8 @@ urlpatterns = [
     path("", views.index, name="index"),
     path("admin/", admin.site.urls),
     path("tinymce/", include("tinymce.urls")),
+    path("api/accounts/", include("accounts.urls")),
+    path("api/blog/", include("blog.urls")),
     path("api/docs/schema/", SpectacularAPIView.as_view(), name="api-schema"),
     path(
         "api/docs/swagger",

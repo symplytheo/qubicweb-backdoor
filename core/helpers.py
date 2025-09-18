@@ -53,16 +53,24 @@ class CustomJSONRenderer(JSONRenderer):
         if response and response.exception:
             # Error response
             response_data["errors"] = data
-            response_data["message"] = self.status_code_messages.get(
-                status_code, "An error occurred."
-            )
+            # prefer error message from details if available
+            if isinstance(data, dict) and "detail" in data:
+                response_data["message"] = data["detail"]
+            else:
+                response_data["message"] = self.status_code_messages.get(
+                    status_code, "An error occurred."
+                )
         else:
             # Success response
             response_data["success"] = True
             response_data["data"] = data
-            response_data["message"] = self.status_code_messages.get(
-                status_code, "Operation was successful."
-            )
+            # if a custom message is provided in the data, use it
+            if isinstance(data, dict) and "message" in data:
+                response_data["message"] = data.pop("message")
+            else:
+                response_data["message"] = self.status_code_messages.get(
+                    status_code, "Operation was successful."
+                )
 
         return super().render(response_data, accepted_media_type, renderer_context)
 
