@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-from .models import CustomUser
+from .models import User
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -11,7 +11,7 @@ class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
 
     class Meta:
-        model = CustomUser
+        model = User
         # select what to expose in JWT payload
         fields = [
             "id",
@@ -27,7 +27,7 @@ class UserSerializer(serializers.ModelSerializer):
         read_only_fields = ["id", "is_verified", "created_at", "updated_at"]
 
     def create(self, validated_data):
-        user = CustomUser(
+        user = User(
             email=validated_data["email"],
             first_name=validated_data.get("first_name", ""),
             last_name=validated_data.get("last_name", ""),
@@ -38,15 +38,13 @@ class UserSerializer(serializers.ModelSerializer):
         return user
 
 
-class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
+class LoginSerializer(TokenObtainPairSerializer):
     """
     Custom serializer to include additional user info in JWT token response.
     """
 
     def validate(self, attrs):
         data = super().validate(attrs)
-
-        print('self.user:', self.user)  # Debugging line to check self.user
 
         data["user"] = UserSerializer(self.user).data
 

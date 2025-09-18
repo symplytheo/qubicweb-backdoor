@@ -24,12 +24,21 @@ urlpatterns = [
     path("", views.index, name="index"),
     path("admin/", admin.site.urls),
     path("tinymce/", include("tinymce.urls")),
-    path("api/accounts/", include("accounts.urls")),
-    path("api/blog/", include("blog.urls")),
-    path("api/docs/schema/", SpectacularAPIView.as_view(), name="api-schema"),
     path(
-        "api/docs/swagger",
-        SpectacularSwaggerView.as_view(url_name="api-schema"),
-        name="api-swagger-docs",
+        "api/",
+        include(
+            [
+                path("accounts/", include("accounts.urls")),
+                path("blog/", include("blog.urls")),
+                path("news/", include("news.urls")),
+                # API schema and documentation
+                path("docs/schema/", SpectacularAPIView.as_view(), name="api-schema"),
+                path(
+                    "docs/swagger",
+                    SpectacularSwaggerView.as_view(url_name="api-schema"),
+                    name="api-swagger-docs",
+                ),
+            ]
+        ),
     ),
 ]

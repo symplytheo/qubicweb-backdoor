@@ -47,9 +47,12 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # rest framework and related
     "rest_framework",
     "blog",
     "accounts",
+    "news",
+    # third-party apps
     "tinymce",
     "drf_spectacular",
 ]
@@ -210,7 +213,7 @@ REST_FRAMEWORK = {
 }
 
 # Custom user model
-AUTH_USER_MODEL = "accounts.CustomUser"
+AUTH_USER_MODEL = "accounts.User"
 
 
 # TinyMCE configuration
