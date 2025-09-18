@@ -21,9 +21,7 @@ class Source(models.Model):
 
 
 class Article(models.Model):
-    source = models.ForeignKey(
-        Source, on_delete=models.CASCADE, related_name="articles"
-    )
+    source = models.ForeignKey(Source, on_delete=models.CASCADE, related_name="articles")
     title = models.CharField(max_length=500)
     slug = models.SlugField(max_length=500, unique=True)
     description = models.TextField(blank=True, null=True)

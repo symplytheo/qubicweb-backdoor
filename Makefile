@@ -9,6 +9,7 @@ help:
 	@echo "  make shell      - Open Django shell"
 	@echo "  make collect    - Collect static files"
 	@echo "  make test       - Run tests"
+	@echo "  make format     - Format code with Black"
 
 # Available commands
 
@@ -36,3 +37,6 @@ collect:
 
 test:
 	python manage.py test
+
+format:
+	black . --line-length 120

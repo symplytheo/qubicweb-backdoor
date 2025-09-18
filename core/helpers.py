@@ -57,9 +57,7 @@ class CustomJSONRenderer(JSONRenderer):
             if isinstance(data, dict) and "detail" in data:
                 response_data["message"] = data["detail"]
             else:
-                response_data["message"] = self.status_code_messages.get(
-                    status_code, "An error occurred."
-                )
+                response_data["message"] = self.status_code_messages.get(status_code, "An error occurred.")
         else:
             # Success response
             response_data["success"] = True
@@ -68,9 +66,7 @@ class CustomJSONRenderer(JSONRenderer):
             if isinstance(data, dict) and "message" in data:
                 response_data["message"] = data.pop("message")
             else:
-                response_data["message"] = self.status_code_messages.get(
-                    status_code, "Operation was successful."
-                )
+                response_data["message"] = self.status_code_messages.get(status_code, "Operation was successful.")
 
         return super().render(response_data, accepted_media_type, renderer_context)
 

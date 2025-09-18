@@ -73,7 +73,7 @@ UNFOLD = {
     "SITE_HEADER": "Qubicweb Backdoor",
     "SITE_SUBHEADER": "Administration Panel",
     # "SITE_ICON": "https://qubicweb.vercel.app/vite.svg",
-    "SITE_SYMBOL": "speed",  # symbol from icon set - fonts.google.com/icons
+    "SITE_SYMBOL": "deployed_code",  # symbol from icon set - fonts.google.com/icons
     "SITE_DROPDOWN": [
         {
             "icon": "diamond",
@@ -193,9 +193,7 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"  # where collectstatic will put files
-STATICFILES_STORAGE = (
-    "whitenoise.storage.CompressedManifestStaticFilesStorage"  # for production
-)
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"  # for production
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -207,9 +205,7 @@ REST_FRAMEWORK = {
     "DEFAULT_RENDERER_CLASSES": ["core.helpers.CustomJSONRenderer"],
     "DEFAULT_PAGINATION_CLASS": "core.helpers.CustomPageNumberPagination",
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
-    "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework_simplejwt.authentication.JWTAuthentication"
-    ],
+    "DEFAULT_AUTHENTICATION_CLASSES": ["rest_framework_simplejwt.authentication.JWTAuthentication"],
 }
 
 # Custom user model

@@ -26,9 +26,7 @@ class Category(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True, blank=True)
-    category = models.ForeignKey(
-        Category, on_delete=models.PROTECT, related_name="posts"
-    )
+    category = models.ForeignKey(Category, on_delete=models.PROTECT, related_name="posts")
     content = HTMLField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
