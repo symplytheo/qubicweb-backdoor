@@ -40,6 +40,7 @@ qubicweb-backdoor/
 │   ├── urls.py            # Account URL patterns
 │   ├── admin.py           # Admin configuration
 │   └── migrations/        # Database migrations
+|
 ├── blog/                  # Blog app (Qubic Originals)
 │   ├── models.py          # Category, Post, Comment, Reply models
 │   ├── serializers.py     # DRF serializers
@@ -47,6 +48,7 @@ qubicweb-backdoor/
 │   ├── urls.py            # Blog URL patterns
 │   ├── admin.py           # Admin configuration
 │   └── migrations/        # Database migrations
+|
 ├── core/                  # Project configuration
 │   ├── settings.py        # Django settings
 │   ├── urls.py            # Main URL configuration
@@ -54,6 +56,7 @@ qubicweb-backdoor/
 │   ├── views.py           # Core views
 │   ├── asgi.py            # ASGI configuration
 │   └── wsgi.py            # WSGI configuration
+|
 ├── news/                  # News aggregation app
 │   ├── models.py          # News models
 │   ├── views.py           # News views
@@ -64,6 +67,7 @@ qubicweb-backdoor/
 │   │   └── commands/
 │   │       └── populate_rss.py  # RSS population command
 │   └── migrations/        # Database migrations
+|
 ├── db.sqlite3             # SQLite database
 ├── manage.py              # Django management script
 ├── requirements.txt       # Python dependencies
